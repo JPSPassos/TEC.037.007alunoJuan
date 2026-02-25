@@ -1,0 +1,49 @@
+<script>
+    let hpBoss = 300;
+    let manaHeroi = 100;
+    let manaGastaTotal = 0;
+    let acao;
+    console.log("O chefe Surgiu: 300hp")
+    for (let turno = 1; turno <= 15; turno++) {
+
+        if (hpBoss <= 0) {
+            console.log("O chefe foi derrotado!")
+            break;
+        }
+        acao = Math.floor(Math.random() * 3) + 1; // Fixed variable name and made it integer 1-3
+        switch (acao) {
+            case 1:
+                console.log("O herói usou um ataque normal. 20 de dano!")
+                hpBoss -= 20;
+                break;
+
+            case 2:
+                if (manaHeroi >= 30) {
+                    console.log("O herói usou um ataque especial. 50 de dano!")
+                    hpBoss -= 50;
+                    manaHeroi -= 30;
+                    manaGastaTotal += 30;
+                } else {
+                    console.log("O herói tentou usar um ataque especial, mas não tinha mana suficiente!")
+                }
+                break; // Added missing break
+
+            case 3:
+                if (manaHeroi >= 50) {
+                    console.log("O herói usou sua ultimate. 150 de dano!")
+                    hpBoss -= 150;
+                    manaHeroi -= 50;
+                    manaGastaTotal += 50;
+                } else {
+                    console.log("O herói tentou usar sua ultimate, mas não tinha mana suficiente!")
+                }
+                break; // Added missing break
+        }
+        console.log("Hp do chefe: " + hpBoss + " | Mana do herói: " + manaHeroi);
+    }
+    if (hpBoss > 0) {
+        console.log("O chefe venceu! O herói foi derrotado.")
+    } else {
+        console.log("O herói venceu! O chefe foi derrotado.")
+    }
+</script>
